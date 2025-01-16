@@ -1,0 +1,151 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section id="subscription-plans" class="py-5">
+    <div class="container-fluid" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        
+        <!-- Subscription Plan Heading (Centered at the top) -->
+        <h1 class="text-center mb-5" style="font-size: 2.5rem; font-weight: bold; color: #333;">Choose Your Subscription Plan</h1>
+
+        <div class="row justify-content-center">
+            <!-- Premium Plan Box -->
+            <div class="col-md-4 well">
+                <h3 class="text-center mb-4">Premium Plan</h3>
+                <p class="text-center">₹799/month</p>
+                <ul class="plan-features">
+                    <li>Ad-free listening</li>
+                    <li>High-quality, lossless audio</li>
+                    <li>Unlimited downloads</li>
+                    <li>Offline listening</li>
+                    <li>Exclusive early access to new releases</li>
+                    <li>Access to premium content and podcasts</li>
+                    <li>Multi-device support (up to 5 devices)</li>
+                </ul>
+                <a href="subscribe.html" class="btn btn-primary btn-block">Subscribe Now</a>
+            </div>
+            
+            <!-- Standard Plan Box -->
+            <div class="col-md-4 well">
+                <h3 class="text-center mb-4">Standard Plan</h3>
+                <p class="text-center">₹599/month</p>
+                <ul class="plan-features">
+                    <li>Ad-free listening</li>
+                    <li>High-quality audio (up to 320kbps)</li>
+                    <li>Limited downloads (up to 1000 songs)</li>
+                    <li>Offline listening on 2 devices</li>
+                    <li>Access to curated playlists</li>
+                    <li>Standard support (email support)</li>
+                    <li>Multi-device support (up to 2 devices)</li>
+                </ul>
+                <a href="subscribe.html" class="btn btn-primary btn-block">Subscribe Now</a>
+            </div>
+            
+            <!-- Basic Plan Box -->
+            <div class="col-md-4 well">
+                <h3 class="text-center mb-4">Basic Plan</h3>
+                <p class="text-center">₹399/month</p>
+                <ul class="plan-features">
+                    <li>Ad-supported listening</li>
+                    <li>Standard quality audio (up to 128kbps)</li>
+                    <li>Limited downloads (up to 500 songs)</li>
+                    <li>Online listening only</li>
+                    <li>Access to basic curated playlists</li>
+                    <li>Community support</li>
+                </ul>
+                <a href="subscribe.html" class="btn btn-primary btn-block">Subscribe Now</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<style>
+    /* Section styling to center everything */
+    #subscription-plans {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f9fa; /* Light grey background for contrast */
+    }
+
+    /* Well box styling */
+    .well {
+        background: #fff; /* White background for the well */
+        border-radius: 12px;  /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+        padding: 30px;
+        margin: 15px;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    /* Plan Heading */
+    h3 {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #007bff; /* Blue color for headings */
+    }
+
+    /* Price Text */
+    p {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Plan Features List */
+    .plan-features {
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .plan-features li {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        text-align: left;
+        color: #333;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s ease;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 767px) {
+        .well {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Heading styling */
+    h1 {
+        font-family: 'Arial', sans-serif;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+        color: #333;
+    }
+</style>

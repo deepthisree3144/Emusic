@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block content %}
+<section id="about-us" class="py-5">
+    <div class="container-fluid" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+        <div class="col-md-8 well" style="background: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 30px;">
+            <h3 class="mb-4 text-center">About Us</h3>
+            <p>
+                Welcome to <strong>E-Music</strong>, your personalized music platform designed to enhance your listening experience! Emusic offers a vast collection of songs, albums, and artists, allowing you to explore music across various genres. With an intuitive search feature, finding your favorite tracks has never been easier. Whether you're looking for a specific song, an artist, or an album, Emusic helps you discover music effortlessly. The platform is responsive, providing a seamless experience across devices, so you can enjoy your music on the go or at home.
+            </p>
+            <p>
+                Create and manage your own playlists, adding your favorite songs to suit any mood or occasion. With a personal user account, you can log in to save your playlists and manage your favorite tracks. The clean, user-friendly interface makes it simple to organize your music and keep your playlists updated. Whether you’re a casual listener or a music enthusiast, Emusic is designed to make discovering, organizing, and enjoying music a smooth and enjoyable experience.
+            </p>  
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<style>
+    /* Section styling to center everything */
+    #about-us {
+        display: flex;
+        justify-content: center;  /* Horizontally center the content */
+        align-items: center;      /* Vertically center the content */
+        min-height: 100vh;        /* Make the section full height */
+        background-color: transparent;  /* No background for the section */
+    }
+
+    /* Well box styling */
+    .well {
+        background: rgba(255, 255, 255, 0.9); /* Transparent white background */
+        border-radius: 12px;  /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+        padding: 30px;
+    }
+
+    h2 {
+        font-family: 'Arial', sans-serif;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        text-align: justify;
+    }
+
+    /* Remove default container padding */
+    .container-fluid {
+        padding: 0;
+    }
+</style>

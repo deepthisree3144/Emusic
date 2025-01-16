@@ -1,0 +1,153 @@
+<!-- extending template, e.g., home.html -->
+{% extends "index.html" %} {% load static %} {% block content %}
+<br /><br /><br />
+
+<!-- Content Section -->
+<div class="content">
+  <!-- Notification Section -->
+  <h2 class="notifications-heading"></h2>
+  <!-- Heading placed on top -->
+  <div class="notifications">
+    <!-- Notification Example -->
+    <div class="notification-item">
+      <div class="notification-text">
+        <strong>Rock Legends</strong> released a new album: "Echoes of the
+        Past".
+        <a href="#" class="read-more">Listen now</a>
+      </div>
+      <div class="notification-time">5 mins ago</div>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-text">
+        <strong>DJ Vibes</strong> added a new track to your favorite playlist:
+        "Sunset Beats".
+        <a href="#" class="read-more">Check it out</a>
+      </div>
+      <div class="notification-time">20 mins ago</div>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-text">
+        <strong>Indie Sounds</strong> is now following you! Get ready for some
+        cool indie vibes.
+        <a href="#" class="read-more">View profile</a>
+      </div>
+      <div class="notification-time">1 hour ago</div>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-text">
+        <strong>PopStar</strong> dropped a new music video: "Dancing Through the
+        Night".
+        <a href="#" class="read-more">Watch video</a>
+      </div>
+      <div class="notification-time">2 hours ago</div>
+    </div>
+
+    <div class="notification-item">
+      <div class="notification-text">
+        <strong>Music World</strong> published an article: "Top 10 Rising
+        Artists You Should Know".
+        <a href="#" class="read-more">Read article</a>
+      </div>
+      <div class="notification-time">3 hours ago</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  {% comment %} /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } {% endcomment %}
+
+
+
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 15px;
+    font-size: 16px;
+  }
+  nav a:hover {
+    background-color: #1ed760;
+    border-radius: 5px;
+  }
+
+  /* Notification Heading */
+  .notifications-heading {
+    text-align: center;
+    font-size: 30px;
+    color: #1db954;
+    margin-bottom: 30px;
+  }
+
+  /* Centering and Styling Notification Section */
+  .notifications {
+    width: 70%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .notification-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+
+  .notification-item:hover {
+    background-color: #f1f1f1;
+  }
+
+  .notification-text {
+    font-size: 16px;
+    color: #555;
+    width: 80%;
+  }
+
+  .notification-time {
+    font-size: 14px;
+    color: #888;
+  }
+
+  .read-more {
+    color: #1db954;
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive layout adjustments */
+  @media (max-width: 767px) {
+    .notifications {
+      width: 90%;
+    }
+
+    .notification-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .notification-time {
+      margin-top: 10px;
+    }
+  }
+</style>
+
+{% endblock %}

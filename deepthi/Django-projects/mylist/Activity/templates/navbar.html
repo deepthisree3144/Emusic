@@ -1,0 +1,66 @@
+{% load static %}
+<head>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Other links and meta tags -->
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-left">
+      <a href="{%url 'home'%}" class="navbar-brand"
+        ><i class="fas fa-headphones"> E-Music</i></a
+      >
+
+      <li>
+        <a href="{% url 'about' %}"><i class="fa fa-file"> About US</i></a>
+      </li>
+
+      {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'spotify_login' %}"
+          ><i class="fa fa-music"></i> Songs</a
+        >
+      </li>
+      <li>
+        <a href="{% url 'subscription' %}"
+          ><i class="fa fa-user-plus"> Subscription Pack</i></a
+        >
+      </li>
+      {% endif %}
+      <li>
+        <a href="{% url 'contact' %}"><i class="fa fa-comments"> Contact</i></a>
+      </li>
+      <li>
+        <a href="{% url 'search' %}"><i class="fa fa-search"> Search</i></a>
+      </li>
+      <li>
+        <a href="{% url 'notifications' %}"
+          ><i class="fa fa-bell"> Notifications</i></a
+        >
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+
+      <li>
+        <a href="{% url 'profile' %}"><i class="fa fa-user"> Profile</i></a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}"><i class="fa fa-power-off"> Logout</i></a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'login' %}"><i class="fa fa-user-circle"> Login</i></a>
+      </li>
+      <li>
+        <a href="{% url 'register' %}"
+          ><i class="fa fa-user-circle"> Signup</i></a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

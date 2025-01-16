@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container-fluid">
+    <div class="col-md-offset-4 col-md-4" style="margin-top: 100px">
+    <h3> you have been logged out</h3>
+    <hr>
+    <b>Login Again ?</b><a href="{% url 'login' %}"> Click </a>
+    </div>
+</div>
+{% endblock %}

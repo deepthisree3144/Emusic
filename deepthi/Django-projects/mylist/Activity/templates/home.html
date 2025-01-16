@@ -1,0 +1,202 @@
+<!-- extending template, e.g., home.html -->
+{% extends "index.html" %} {% load static %} {% block content %}
+<br /><br /><br />
+
+<!-- Search and Voice Search Section at the top center -->
+
+<!-- Center Section (Search Icon and Category Icon) -->
+<div class="d-flex align-items-center mx-auto">
+  <a href="{% url 'search' %}" class="icon">
+    <i class="bi bi-search" title="Search"></i>
+  </a>
+</div>
+<!-- Image and Genre Sections -->
+<div class="homesimg">
+  <div class="container mt-4">
+    <div class="row justify-content-center image-row">
+      <div class="col-md-4 text-center mb-4">
+        <a href="https://open.spotify.com/search/hiphop">
+          <img
+            src="{% static 'images/hiphop.jpg' %}"
+            alt="Hiphop"
+            class="img-fluid styled-img"
+        /></a>
+        <h3>Hiphop</h3>
+      </div>
+      <div class="col-md-4 text-center mb-4">
+        <a href="https://open.spotify.com/search/pop">
+          <img
+            src="{% static 'images/pop (1).jpg' %}"
+            alt="Pop"
+            class="img-fluid styled-img"
+        /></a>
+        <h3>Pop</h3>
+      </div>
+      <div class="col-md-4 text-center mb-4">
+        <a href="https://open.spotify.com/search/melody">
+          <img
+            src="{% static 'images/melody2 (1).jpg' %}"
+            alt="Melody"
+            class="img-fluid styled-img"
+        /></a>
+        <h3>Melody</h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center image-row">
+      <div class="col-md-4 text-center">
+        <a href="https://open.spotify.com/search/rock">
+          <img
+            src="{% static 'images/rock (1).jpg' %}"
+            alt="Rock"
+            class="img-fluid styled-img"
+        /></a>
+        <h3>Rock</h3>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="https://open.spotify.com/search/kpop">
+          <img
+            src="{% static 'images/kpop.jpg' %}"
+            alt="Kpop"
+            class="img-fluid styled-img"
+        /></a>
+        <h3>Kpop</h3>
+      </div>
+      <div class="col-md-4 text-center">
+        <a href="https://open.spotify.com/search/disco">
+          <img
+            src="{% static 'images/disco (1).jpg' %}"
+            alt="Disco"
+            class="img-fluid styled-img"
+        /></a>
+        <h3>Disco</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+<center><h3 class="white-box">Artist</h3></center>
+<br />
+
+<div class="row justify-content-center image-row">
+  <div class="col-md-3 text-center">
+    <a href="https://open.spotify.com/search/sid%20sriram"
+      ><img
+        src="{% static 'images/sid sriram (1).jpg' %}"
+        alt="Sid"
+        class="img-fluid styled-img"
+    /></a>
+    <h3>SID SRIRAM</h3>
+  </div>
+  <div class="col-md-3 text-center">
+    <a href="https://open.spotify.com/search/anirudh%20ravichander"
+      ><img
+        src="{% static 'images/anirudh1.jpg' %}"
+        alt="Pop"
+        class="img-fluid styled-img"
+    /></a>
+    <h3>ANIRUDH RAVICHANDER</h3>
+  </div>
+  <div class="col-md-3 text-center">
+    <a href="https://open.spotify.com/search/ar%20rahman%20hindi"
+      ><img
+        src="{% static 'images/ar-rahman.jpg' %}"
+        alt="Melody"
+        class="img-fluid styled-img"
+    /></a>
+    <h3>A.R.RAHMAN</h3>
+  </div>
+  <div class="col-md-3 text-center">
+    <a href="https://open.spotify.com/search/justin%20bieber"
+      ><img
+        src="{% static 'images/justin (1).jpg' %}"
+        alt="Rap"
+        class="img-fluid styled-img"
+    /></a>
+    <h3>JUSTIN BIEBER</h3>
+  </div>
+</div>
+<br />
+<hr />
+
+<style>
+  .styled-img {
+    height: 270px;
+    width: 180px;
+    box-shadow: 2px 2px 2px;
+  }
+
+  .homesimg {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h5 {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  /* Styling for Search Bar and Voice Search */
+  .input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  /* Add some space between the search bar and the content below */
+  .container {
+    padding-top: 15px;
+  }
+
+  /* Responsive layout adjustments */
+  @media (max-width: 767px) {
+    .input-group {
+      width: 100%;
+    }
+
+    .col-md-3 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+<!-- Voice Search Script -->
+<script>
+  document
+    .getElementById("search-input")
+    .addEventListener("input", function () {
+      var query = this.value;
+
+      if (query.length > 1) {
+        // Only start searching after 2 characters
+        fetch(`/ajax/search/?query=${query}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const suggestionsContainer = document.getElementById("suggestions");
+            suggestionsContainer.innerHTML = ""; // Clear previous results
+
+            // Show suggestions
+            if (data.suggestions.length > 0) {
+              suggestionsContainer.style.display = "block"; // Show the suggestions container
+              data.suggestions.forEach((suggestion) => {
+                const suggestionElement = document.createElement("li");
+                suggestionElement.classList.add("list-group-item");
+                suggestionElement.innerHTML = `<a href="${suggestion.url}" target="_blank">${suggestion.name} (${suggestion.type})</a>`;
+                suggestionsContainer.appendChild(suggestionElement);
+              });
+            } else {
+              suggestionsContainer.style.display = "none"; // Hide if no results
+            }
+          });
+      } else {
+        document.getElementById("suggestions").style.display = "none"; // Hide when input is short
+      }
+    });
+</script>
+
+{% endblock %}

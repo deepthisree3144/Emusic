@@ -1,0 +1,148 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section id="contact-us" class="py-5 bg-light">
+    <div class="container">
+        <hr>
+        <hr>
+        <hr>
+        <h1 class="text-center mb-5">Contact Us</h1>
+        <hr>
+
+        <div class="row justify-content-center">
+            <!-- Contact Form Column -->
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm centered-box">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Report a problem</h3>
+                        <hr>
+                        <p class="text-center mb-4">For any problems or inquiries, please fill the form below.</p>
+
+                        <!-- Contact Form -->
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="issueType">Problem Type</label>
+                                <select class="form-control" id="issueType" required>
+                                    <option>Bug Report</option>
+                                    <option>Feature Request</option>
+                                    <option>General Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Describe Your Issue</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Describe the problem you're facing" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div id="successMessage" class="alert alert-success mt-3" style="display: none;">
+                            <strong>Success!</strong> Your report has been successfully submitted. We will fix it shortly. <hr><b>The page will redirect automatically after 10 seconds!</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info Column -->
+            <div class="col-md-8 col-lg-6 mt-4 mt-md-0">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h4 class="text-center mb-4">Contact Information</h4>
+                <p class="text-center">If you prefer, you can also directly reach us via email for any urgent queries:</p>
+                <ul class="list-unstyled text-center">
+                    <li><strong>Email:</strong> <a href="mailto:emusicai44.com">emusicai44.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<style>
+    #contact-us {
+        background-color: #f9f9f9;
+    }
+
+    .centered-box {
+        background-color: rgba(255, 255, 255, 0.8); /* Transparent box */
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        margin-top: 40px; /* Add some margin to the top */
+        margin-bottom: 40px; /* Add some margin to the bottom */
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .contact-info ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .contact-info ul li {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    /* Justify the content within the text */
+    .card-body p, .card-body textarea {
+        text-align: justify;
+    }
+
+    .alert {
+        text-align: center;
+    }
+</style>
+
+<script>
+    // Handle form submission
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent form from submitting normally
+        
+        // Show success message
+        document.getElementById('successMessage').style.display = 'block';
+        
+        // Hide the form after submission
+        document.getElementById('contactForm').style.display = 'none';
+        
+        // Optionally redirect after a delay (for a smooth experience)
+        setTimeout(function() {
+            window.location.href = '{% url "home" %}'; // Redirect to homepage (adjust this URL name as per your project)
+        }, 10000); // Wait 10 seconds before redirecting
+    });
+</script>

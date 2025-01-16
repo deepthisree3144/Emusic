@@ -1,0 +1,131 @@
+{% extends "index.html" %}
+{% block content %}
+
+<!-- Add Bootstrap and custom CSS for better styling -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    .profile-container {
+        margin-top: 100px;
+    }
+    .profile-header {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .profile-picture {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .round-img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 5px solid #007bff;
+    }
+    .file-input {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .file-input label {
+        cursor: pointer;
+    }
+    .preview-img {
+        margin-top: 10px;
+        display: block;
+    }
+    .form-group label {
+        font-weight: bold;
+    }
+    .submit-btn {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="container profile-container">
+    <div class="col-md-offset-3 col-md-6">
+        <!-- User Profile Section -->
+        <div class="profile-header">
+            <h3 class="text-primary text-center">User Detail</h3>
+            <div class="profile-picture">
+                {% if user.display_picture %}
+                    <img src="{{ user.display_picture.url }}" alt="Display Picture" class="round-img" id="displayPicture">
+                {% else %}
+                    <img src="https://via.placeholder.com/150" alt="No Display Picture" class="round-img" id="displayPicture">
+                {% endif %}
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>User Name</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Profile Settings Section -->
+        <h3 class="text-primary text-center" style="margin-top: 30px;">Profile Settings</h3>
+        <form method="POST" action="/update_profile" enctype="multipart/form-data">
+            <!-- Change Username -->
+            <div class="form-group">
+                <label for="username">Change Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+            </div>
+            <!-- Change Email -->
+            <div class="form-group">
+                <label for="email">Change Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+            </div>
+            <!-- Change Password -->
+            <div class="form-group">
+                <label for="password">New Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password">
+            </div>
+            <!-- Change Display Picture -->
+            <div class="form-group file-input">
+                <label for="display_picture" class="btn btn-outline-primary">
+                    <i class="fa fa-upload"></i> Change Display Picture
+                </label>
+                <input type="file" class="form-control-file d-none" id="display_picture" name="display_picture" accept="image/*" onchange="previewImage(event)">
+            </div>
+            <!-- Preview Image -->
+            <div class="preview-img text-center">
+                <img id="preview" class="round-img" src="#" alt="Image Preview" style="display: none;" width="150" height="150">
+            </div>
+            <!-- Submit Button -->
+            <div class="submit-btn">
+                <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Optional JavaScript for Image Preview -->
+<script>
+    function previewImage(event) {
+        const preview = document.getElementById('preview');
+        const displayPicture = document.getElementById('displayPicture');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function() {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+            displayPicture.style.display = 'none';
+        }
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+{% endblock %}
